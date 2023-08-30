@@ -414,7 +414,15 @@ for i in range(len(schoolName)):
                 #select teacher
                 select_cikgu = driver.find_element(By.XPATH, "//select[@name='papar_guru']")
                 select = Select(select_cikgu)
-                select.select_by_visible_text(teacher[x])
+                
+                lowercase_options = [option.text.lower() for option in select.options]
+                lowercase_name = teacher[x].lower()
+
+                if lowercase_name in lowercase_options:
+                    select.select_by_visible_text(teacher[x])
+                else:
+                    print(f"{teacher[x]} not found in the teacher list.")
+               
                 #click checkbox
                 driver.find_element(By.XPATH, "//input[@type='checkbox']").click()
                 #submit ssdm

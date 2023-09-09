@@ -51,7 +51,7 @@ Provide instructions for users to get your project up and running locally.
    While the 'py' environment is active, install additional packages using pip3:
 
    ```sh
-   pip3 install openpyxl selenium glob2
+   pip3 install openpyxl selenium glob2 textdistance
    ```
    These commands will install Openpyxl, Selenium, and Glob2 in the 'py' environment.
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[17]:
+# In[20]:
 
 
 from selenium import webdriver
@@ -10,6 +10,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
+import textdistance
 import os
 import time
 import glob2
@@ -18,8 +19,8 @@ from IPython.display import clear_output
 import sys
 
 #adjust path accordingly to OS
-loginCSV = r"C:\Users\Aiman\Desktop\ssdm damai jaya 16jul-16aug.csv"
-excel_folder = r"C:\Users\Aiman\Desktop\DAMAI JAYA"
+loginCSV = r"C:\Users\Aiman\Desktop\ssdm login terengganu (1jun-31aug).csv"
+excel_folder = r"C:\Users\Aiman\Desktop\ssdm terengganu (1jun-31aug)"
 #loginCSV = "/Users/piixel/Downloads/ssdm damai jaya 16jul-16aug.csv"
 #excel_folder = "/Users/piixel/Downloads/DAMAI JAYA"
 
@@ -131,23 +132,23 @@ def return_day(DaySeries):
 def return_month(MonthSeries):
     select_month = driver.find_element(By.XPATH, "//select[@name='_b_bulan_mula_tk']")
     select = Select(select_month)
-    if MonthSeries == "01":
+    if MonthSeries == "1":
         select.select_by_value('JAN')
-    elif MonthSeries == "02":
+    elif MonthSeries == "2":
         select.select_by_value('FEB')
-    elif MonthSeries == "03":
+    elif MonthSeries == "3":
         select.select_by_value('MAR')
-    elif MonthSeries == "04":
+    elif MonthSeries == "4":
         select.select_by_value('APR')
-    elif MonthSeries == "05":
+    elif MonthSeries == "5":
         select.select_by_value('MAY')
-    elif MonthSeries == "06":
+    elif MonthSeries == "6":
         select.select_by_value('JUN')
-    elif MonthSeries == "07":
+    elif MonthSeries == "7":
         select.select_by_value('JUL')
-    elif MonthSeries == "08":
+    elif MonthSeries == "8":
         select.select_by_value('AUG')
-    elif MonthSeries == "09":
+    elif MonthSeries == "9":
         select.select_by_value('SEP')
     elif MonthSeries == "10":
         select.select_by_value('OCT')
@@ -336,12 +337,12 @@ for i in range(len(schoolName)):
 
             for date_string in DateTime:
                 parts = date_string.split()  # Split the date and time parts
-                date_part = parts[0].split('-')  # Split the date into year, month, and day
+                date_part = parts[0].split('/')  # Split the date into year, month, and day
                 time_part = parts[1].split(':')  # Split the time into hour, minute, and second
 
-                year.append(date_part[0])
+                year.append(date_part[2])
                 month.append(date_part[1])
-                day.append(date_part[2])
+                day.append(date_part[0])
                 hour.append(time_part[0])
                 minute.append(time_part[1])
 
@@ -411,10 +412,28 @@ for i in range(len(schoolName)):
                 #select time
                 return_hour(hour[x])
                 return_min(minute[x])
+                
                 #select teacher
                 select_cikgu = driver.find_element(By.XPATH, "//select[@name='papar_guru']")
                 select = Select(select_cikgu)
-                select.select_by_visible_text(teacher[x])
+                
+                best_match_similarity = 0
+                best_match_option = None
+                
+                # Loop through the options and find the best match for the partial name
+                for option in select.options:
+                    similarity = textdistance.jaro_winkler.normalized_similarity(teacher[x].lower(), option.text.lower())
+                    if similarity > best_match_similarity:
+                        best_match_similarity = similarity
+                        best_match_option = option
+
+                # Check if a best match was found and select it
+                if best_match_option is not None:
+                    select.select_by_visible_text(best_match_option.text)
+                else:
+                    # Handle the case when no match was found
+                    select.select_by_index(0)
+                                      
                 #click checkbox
                 driver.find_element(By.XPATH, "//input[@type='checkbox']").click()
                 #submit ssdm
@@ -454,4 +473,35 @@ for i in range(len(schoolName)):
         close_driver()
 
 print("Sync process is done for all schools")
+
+
+# In[17]:
+
+
+df = pd.read_csv(r"C:\Users\Aiman\Desktop\ssdm terengganu (1jun-31aug)\A.csv")
+
+DateTime = df["Date & Time"].astype('string')
+
+day = []
+month = []
+year = []
+hour = []
+minute = []
+
+print(DateTime[0])
+
+for date_string in DateTime:
+    parts = date_string.split()  # Split the date and time parts
+    date_part = parts[0].split('/')  # Split the date into year, month, and day
+    time_part = parts[1].split(':')  # Split the time into hour, minute, and second
+
+    year.append(date_part[2])
+    month.append(date_part[1])
+    day.append(date_part[0])
+    hour.append(time_part[0])
+    minute.append(time_part[1])
+    
+print(day[0])
+print(month[0])
+print(year[0])
 

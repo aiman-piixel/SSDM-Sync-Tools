@@ -18,7 +18,7 @@ import sys
 
 login_excel = r"C:\Users\Aiman\Downloads\terengganu_school_detail.xlsx"
 df = pd.read_excel(login_excel)
-school = df['SEKOLAH']
+school = df['SCHOOL']
 email = df['EMAIL']
 done = df['DONE']
 

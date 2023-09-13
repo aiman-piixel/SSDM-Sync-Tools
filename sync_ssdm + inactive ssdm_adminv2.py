@@ -473,35 +473,3 @@ for i in range(len(schoolName)):
         close_driver()
 
 print("Sync process is done for all schools")
-
-
-# In[17]:
-
-
-df = pd.read_csv(r"C:\Users\Aiman\Desktop\ssdm terengganu (1jun-31aug)\A.csv")
-
-DateTime = df["Date & Time"].astype('string')
-
-day = []
-month = []
-year = []
-hour = []
-minute = []
-
-print(DateTime[0])
-
-for date_string in DateTime:
-    parts = date_string.split()  # Split the date and time parts
-    date_part = parts[0].split('/')  # Split the date into year, month, and day
-    time_part = parts[1].split(':')  # Split the time into hour, minute, and second
-
-    year.append(date_part[2])
-    month.append(date_part[1])
-    day.append(date_part[0])
-    hour.append(time_part[0])
-    minute.append(time_part[1])
-    
-print(day[0])
-print(month[0])
-print(year[0])
-

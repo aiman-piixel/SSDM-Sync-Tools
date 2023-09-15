@@ -107,23 +107,23 @@ def dropdown_ssdm(category):
 def return_day(DaySeries):
     select_date = driver.find_element(By.XPATH, "//select[@name='_b_hari_mula_tk']")
     select = Select(select_date)
-    if DaySeries == "01":
+    if DaySeries == "01" or DaySeries == '1':
         select.select_by_value('1')
-    elif DaySeries == "02":
+    elif DaySeries == "02" or DaySeries == '2':
         select.select_by_value('2')
-    elif DaySeries == "03":
+    elif DaySeries == "03" or DaySeries == '3':
         select.select_by_value('3')
-    elif DaySeries == "04":
+    elif DaySeries == "04" or DaySeries == '4':
         select.select_by_value('4')
-    elif DaySeries == "05":
+    elif DaySeries == "05" or DaySeries == '5':
         select.select_by_value('5')
-    elif DaySeries == "06":
+    elif DaySeries == "06" or DaySeries == '6':
         select.select_by_value('6')
-    elif DaySeries == "07":
+    elif DaySeries == "07" or DaySeries == '7':
         select.select_by_value('7')
-    elif DaySeries == "08":
+    elif DaySeries == "08" or DaySeries == '8':
         select.select_by_value('8')
-    elif DaySeries == "09":
+    elif DaySeries == "09" or DaySeries == '9':
         select.select_by_value('9')
     else:    
         select.select_by_value(DaySeries)
@@ -132,23 +132,23 @@ def return_day(DaySeries):
 def return_month(MonthSeries):
     select_month = driver.find_element(By.XPATH, "//select[@name='_b_bulan_mula_tk']")
     select = Select(select_month)
-    if MonthSeries == "1":
+    if MonthSeries == "1" or MonthSeries == '1':
         select.select_by_value('JAN')
-    elif MonthSeries == "2":
+    elif MonthSeries == "2" or MonthSeries == '2':
         select.select_by_value('FEB')
-    elif MonthSeries == "3":
+    elif MonthSeries == "3" or MonthSeries == '3':
         select.select_by_value('MAR')
-    elif MonthSeries == "4":
+    elif MonthSeries == "4" or MonthSeries == '4':
         select.select_by_value('APR')
-    elif MonthSeries == "5":
+    elif MonthSeries == "5" or MonthSeries == '5':
         select.select_by_value('MAY')
-    elif MonthSeries == "6":
+    elif MonthSeries == "6" or MonthSeries == '6':
         select.select_by_value('JUN')
-    elif MonthSeries == "7":
+    elif MonthSeries == "7" or MonthSeries == '7':
         select.select_by_value('JUL')
-    elif MonthSeries == "8":
+    elif MonthSeries == "8" or MonthSeries == '8':
         select.select_by_value('AUG')
-    elif MonthSeries == "9":
+    elif MonthSeries == "9" or MonthSeries == '9':
         select.select_by_value('SEP')
     elif MonthSeries == "10":
         select.select_by_value('OCT')
@@ -167,23 +167,23 @@ def return_year(YearSeries):
 def return_hour(HourSeries):
     select_hour = driver.find_element(By.XPATH, "//select[@name='jam']")
     select = Select(select_hour)
-    if HourSeries == "13" or HourSeries == "01":
+    if HourSeries == "13" or HourSeries == "01" or HourSeries == '1':
         select.select_by_value('01')
-    elif HourSeries == "14" or HourSeries == "02":
+    elif HourSeries == "14" or HourSeries == "02" or HourSeries == '2':
         select.select_by_value('02')
-    elif HourSeries == "15" or HourSeries == "03":
+    elif HourSeries == "15" or HourSeries == "03" or HourSeries == '3':
         select.select_by_value('03')
-    elif HourSeries == "16" or HourSeries == "04":
+    elif HourSeries == "16" or HourSeries == "04" or HourSeries == '4':
         select.select_by_value('04')
-    elif HourSeries == "17" or HourSeries == "05":
+    elif HourSeries == "17" or HourSeries == "05" or HourSeries == '5':
         select.select_by_value('05')
-    elif HourSeries == "18" or HourSeries == "06":
+    elif HourSeries == "18" or HourSeries == "06" or HourSeries == '6':
         select.select_by_value('06')
-    elif HourSeries == "19" or HourSeries == "07":
+    elif HourSeries == "19" or HourSeries == "07" or HourSeries == '7':
         select.select_by_value('07')
-    elif HourSeries == "20" or HourSeries == "08":
+    elif HourSeries == "20" or HourSeries == "08" or HourSeries == '8':
         select.select_by_value('08')
-    elif HourSeries == "21" or HourSeries == "09":
+    elif HourSeries == "21" or HourSeries == "09" or HourSeries == '9':
         select.select_by_value('09')
     elif HourSeries == "22" or HourSeries == "10":
         select.select_by_value('10')
@@ -360,6 +360,8 @@ for i in range(len(schoolName)):
             login_box.send_keys(ssdmID[i])
             pass_box.send_keys(ssdmPass[i])
             wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@class='button']"))).click()
+
+            driver.find_element(By.XPATH, "//a[@href='kemaskini_murid.cfm']").click()
 
             totalStudent = len(student_name)
             print("Total submission: "+ str(totalStudent))

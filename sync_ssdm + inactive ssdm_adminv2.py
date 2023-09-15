@@ -132,23 +132,23 @@ def return_day(DaySeries):
 def return_month(MonthSeries):
     select_month = driver.find_element(By.XPATH, "//select[@name='_b_bulan_mula_tk']")
     select = Select(select_month)
-    if MonthSeries == "1" or MonthSeries == '1':
+    if MonthSeries == "1" or MonthSeries == '01':
         select.select_by_value('JAN')
-    elif MonthSeries == "2" or MonthSeries == '2':
+    elif MonthSeries == "2" or MonthSeries == '02':
         select.select_by_value('FEB')
-    elif MonthSeries == "3" or MonthSeries == '3':
+    elif MonthSeries == "3" or MonthSeries == '03':
         select.select_by_value('MAR')
-    elif MonthSeries == "4" or MonthSeries == '4':
+    elif MonthSeries == "4" or MonthSeries == '04':
         select.select_by_value('APR')
-    elif MonthSeries == "5" or MonthSeries == '5':
+    elif MonthSeries == "5" or MonthSeries == '05':
         select.select_by_value('MAY')
-    elif MonthSeries == "6" or MonthSeries == '6':
+    elif MonthSeries == "6" or MonthSeries == '06':
         select.select_by_value('JUN')
-    elif MonthSeries == "7" or MonthSeries == '7':
+    elif MonthSeries == "7" or MonthSeries == '07':
         select.select_by_value('JUL')
-    elif MonthSeries == "8" or MonthSeries == '8':
+    elif MonthSeries == "8" or MonthSeries == '08':
         select.select_by_value('AUG')
-    elif MonthSeries == "9" or MonthSeries == '9':
+    elif MonthSeries == "9" or MonthSeries == '09':
         select.select_by_value('SEP')
     elif MonthSeries == "10":
         select.select_by_value('OCT')

@@ -57,7 +57,7 @@ Provide instructions for users to get your project up and running locally.
 
    To start the Jupyter Notebook server, run the following command:
    ```sh
-   conda jupyter notebook
+   jupyter notebook
    ```
 
 3. **Installing Chrome WebDriver**:

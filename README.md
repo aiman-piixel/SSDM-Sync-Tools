@@ -59,8 +59,12 @@ Provide instructions for users to get your project up and running locally.
    ```sh
    jupyter notebook
    ```
+   *Note: Some older conda version require this command instead. Try this if the command above does not work and vice versa!
+   ```sh
+   conda jupyter notebook
+   ```
 
-3. **Installing Chrome WebDriver**:
+4. **Installing Chrome WebDriver**:
 
    To use Selenium with Google Chrome, you'll need the Chrome WebDriver. Follow these steps to download and set it up:
 

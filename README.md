@@ -37,7 +37,7 @@ Provide instructions for users to get your project up and running locally.
    Open a terminal or Anaconda prompt and run the following command to create a new environment named 'py' with the latest version of Python:
 
    ```sh
-   conda create -n py python
+   conda create --name py python
    ```
 
    Then run the following command to activate the new environment and install these packages:

@@ -189,7 +189,7 @@ def return_hour(HourSeries):
         select.select_by_value('10')
     elif HourSeries == "23" or HourSeries == "11":
         select.select_by_value('11')
-    elif HourSeries == "24" or HourSeries == "00":
+    elif HourSeries == "24" or HourSeries == "00" or HourSeries == "0":
         select.select_by_value('12')    
     else:
         select.select_by_value(HourSeries)

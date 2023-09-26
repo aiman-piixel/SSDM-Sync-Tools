@@ -1,2 +1,2 @@
-NAME,ID,PASS,EMAIL,START,END,PREPPED,DONE
-school,id,pass,email,1,1,0,0
+NAME,ID,PASS,EMAIL,PASSWORD,START,END,PREPPED,DONE
+school,id,pass,email,password,1,1,0,0

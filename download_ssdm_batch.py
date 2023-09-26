@@ -112,7 +112,7 @@ for y in range(len(school)):
 
         #####################navigate to reporting####################
         wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/img"))).click()
-        time.sleep(2)
+        time.sleep(3)
         wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div[2]/div/div/div/div[1]/div/div[7]/a"))).click()
         #####################navigate to reporting####################
 

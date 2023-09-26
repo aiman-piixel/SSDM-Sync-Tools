@@ -20,6 +20,7 @@ login_excel = r"C:\Users\Aiman\Downloads\terengganu_school_detail.xlsx"
 df = pd.read_excel(login_excel)
 school = df['SCHOOL']
 email = df['EMAIL']
+password = df['PASSWORD']
 done = df['DONE']
 
 def close_driver():
@@ -54,7 +55,7 @@ for y in range(len(school)):
         })
         driver = webdriver.Chrome(options=options)
 
-        password = 'password'
+        password = password[y]
         x=0
 
         item = ['MEMBANTU GURU JIKA ADA MAJLIS',
@@ -112,7 +113,7 @@ for y in range(len(school)):
 
         #####################navigate to reporting####################
         wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/img"))).click()
-        time.sleep(3)
+        time.sleep(2)
         wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div[2]/div/div/div/div[1]/div/div[7]/a"))).click()
         #####################navigate to reporting####################
 

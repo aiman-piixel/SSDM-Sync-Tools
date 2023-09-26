@@ -19,8 +19,8 @@ from IPython.display import clear_output
 import sys
 
 #adjust path accordingly to OS
-loginCSV = r"C:\Users\Aiman\Desktop\ssdm login terengganu (1jun-31aug).csv"
-excel_folder = r"C:\Users\Aiman\Desktop\ssdm terengganu (1jun-31aug)"
+loginCSV = r"C:\Users\Aiman\Desktop\ssdm.csv"
+excel_folder = r"C:\Users\Aiman\Desktop\ssdm"
 #loginCSV = "/Users/piixel/Downloads/ssdm damai jaya 16jul-16aug.csv"
 #excel_folder = "/Users/piixel/Downloads/DAMAI JAYA"
 
@@ -241,6 +241,7 @@ schoolName = df_login['NAME']
 ssdmID = df_login['ID']
 ssdmPass = df_login['PASS']
 schoolEmail = df_login['EMAIL']
+schoolPass = df_login['PASSWORD']
 startPage = df_login['START']
 endPage = df_login['END']
 statusPrep = df_login['PREPPED'].to_numpy()
@@ -268,7 +269,7 @@ for i in range(len(schoolName)):
 
             login_box, pass_box = wait.until(EC.visibility_of_all_elements_located((By.CSS_SELECTOR , "input[name='email'], input[name='password']")))
             login_box.send_keys(schoolEmail[i])
-            pass_box.send_keys('password')
+            pass_box.send_keys(schoolPass[i])
             wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@type='submit']"))).click()
             #let the page load after signing in
             time.sleep(2)
@@ -337,12 +338,12 @@ for i in range(len(schoolName)):
 
             for date_string in DateTime:
                 parts = date_string.split()  # Split the date and time parts
-                date_part = parts[0].split('/')  # Split the date into year, month, and day
+                date_part = parts[0].split('-')  # Split the date into year, month, and day
                 time_part = parts[1].split(':')  # Split the time into hour, minute, and second
 
-                year.append(date_part[2])
+                year.append(date_part[0])
                 month.append(date_part[1])
-                day.append(date_part[0])
+                day.append(date_part[2])
                 hour.append(time_part[0])
                 minute.append(time_part[1])
 

@@ -106,7 +106,20 @@ Provide instructions for users to get your project up and running locally.
   
   Now you have the Chrome WebDriver installed and set up on your Windows system. You can use it with Selenium for automated testing and web scraping.
 
-### Usage
+## Usage
 
-     
+  There are 3 main steps to sync SSDM data from StudentQR to SSDM website. Either way, make sure the to launch the appropiate conda environment and jupyter notebook first, then head to this project's folder directory, whenever you placed them.:
+  
+  - [Downloading Submission](#downloading-submission)
+  - [Data Cleaning & Prep](#data-cleaning-&-prep)
+  - [Script Preparation](#script-preparation)
+
+  Each steps involves different scripts for modularity, so please make to read carefully on which script to use.
+
+### Downloading Submission
+
+  We must first download and gather all submissions that we would like to sync from the StudentQR admin website. In this steps, you have 2 options. You can either download submissions from one school at a time, or you can download submissions from a list of schools in batch. 
+
+  To download from one school only, open this notebook: **download_ssdm_single_school.ipynb**
+  To make it usable on your machine, there are some variables that you need to alter, which are the folder directory, the school email and password if needed, and the calender cycle loop block (more on that later)
    

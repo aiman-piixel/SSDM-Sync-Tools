@@ -384,7 +384,7 @@ for i in range(len(schoolName)):
                     totalStudent-=1
                     print("Remaining submissions :"+ str(totalStudent))
                     #update sync status
-                    synced[x]=1
+                    synced[x]=2
                     df['Synced'] = synced
                     df.to_csv(fileNames[i], index=False)
                     continue
